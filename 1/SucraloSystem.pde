@@ -6,12 +6,11 @@ SucraSys ps;
 void setup() {
   size(screenWidth, screenHeight, P2D);
   colorMode(RGB);
-  particleImages = new PImage[5];
+  particleImages = new PImage[4];
   particleImages[0] = loadImage('sucra1.png');
-  particleImages[1] = loadImage('sucra2.png');
+  particleImages[1] = loadImage('sucra5.png');
   particleImages[2] = loadImage('sucra3.png');
   particleImages[3] = loadImage('sucra4.png');
-  particleImages[4] = loadImage('sucra5.png');
   ps = new SucraSys(1000, new PVector(width/2,height/2,0));
 }
 
