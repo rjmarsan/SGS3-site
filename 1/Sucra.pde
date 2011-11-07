@@ -3,13 +3,14 @@
   static float idealdist = 20;
   static float particleRandomMovement = 0.1f;
   static float particleDampening = 0.95f;
-  static PImage particleImage;
+  static PImage[] particleImages;
 
 
 class Sucra {
   PVector loc;
   PVector vel;
   PVector acc;
+  PImage partimage;
   
   
   
@@ -17,6 +18,7 @@ class Sucra {
     acc = new PVector(0,0,0);
     vel = new PVector(0,0,0);
     loc = location.get();
+    partimage = particleImages[(int)random(0,particleImages.length)];
   }
   
   
@@ -43,7 +45,7 @@ class Sucra {
     vel.x += random(-1,1)*particleRandomMovement;
     vel.y += random(-1,1)*particleRandomMovement;//.add(new PVector(random(-1,1)*particleRandomMovement, random(-1,1)*particleRandomMovement, 0));
     vel.mult(particleDampening);
-    bounds(0,width-siz,0,height-siz);
+    bounds(0,width,0,height);
   }
   
   void bounds(float lowx, float highx, float lowy, float highy) {
@@ -67,11 +69,13 @@ class Sucra {
   
   void render() {
     //rect(loc.x,loc.y,siz,siz);
-    pushMatrix();
-    translate(loc.x,loc.y);
+    //ellipse(loc.x,loc.y,siz,siz);
+    image(partimage,loc.x,loc.y);
+    //pushMatrix();
+    //translate(loc.x,loc.y);
     //rotate(10);
-    image(particleImage,0,0);
-    popMatrix();
+    //image(particleImage,0,0);
+    //popMatrix();
   }
   
   void applyForce(float vx, float vy) {

@@ -6,8 +6,13 @@ SucraSys ps;
 void setup() {
   size(screenWidth, screenHeight, P2D);
   colorMode(RGB);
-  ps = new SucraSys(400, new PVector(width/2,height/2,0));
-  particleImage = loadImage('sucra.png');
+  particleImages = new PImage[5];
+  particleImages[0] = loadImage('sucra1.png');
+  particleImages[1] = loadImage('sucra2.png');
+  particleImages[2] = loadImage('sucra3.png');
+  particleImages[3] = loadImage('sucra4.png');
+  particleImages[4] = loadImage('sucra5.png');
+  ps = new SucraSys(1000, new PVector(width/2,height/2,0));
 }
 
 
@@ -29,7 +34,7 @@ void mousePressed() {
   ps.repel(mouseX, mouseY, 50.3f);
 }
 
-void mouseMoved() {
-  ps.repel(mouseX, mouseY, 5.3f);
+void mouseDragged() {
+  ps.repel(mouseX, mouseY, 25.3f);
 }
   
