@@ -11,7 +11,7 @@ void setup() {
   particleImages[1] = loadImage('sucra5.png');
   particleImages[2] = loadImage('sucra3.png');
   particleImages[3] = loadImage('sucra4.png');
-  ps = new SucraSys(1000, new PVector(width/2,height/2,0));
+  ps = new SucraSys(4000, new PVector(width/2,height/2,0));
 }
 
 
@@ -24,7 +24,7 @@ void draw() {
   } else {
         particleRandomMovement = 1;
   }
-  //println("framerate: "+frameRate);
+  if (frameCount % 10 == 0) println("framerate: "+frameRate);
 }
 
 

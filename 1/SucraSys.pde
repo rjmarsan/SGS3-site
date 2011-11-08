@@ -21,7 +21,7 @@ class SucraSys {
   void render() {
     noStroke();
     imageMode(CENTER);
-    fill(250,250);
+    fill(250,170);
     for (int i=sucras.size()-1; i >=0; i--) {
       ((Sucra)(sucras.get(i))).render();
     }

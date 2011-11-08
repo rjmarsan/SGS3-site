@@ -1,5 +1,5 @@
   final static PVector ZERO = new PVector(0,0,0);
-  static float siz = 10;
+  static float siz = 30;
   static float idealdist = 20;
   static float particleRandomMovement = 0.1f;
   static float particleDampening = 0.95f;
@@ -68,9 +68,9 @@ class Sucra {
   }
   
   void render() {
-    //rect(loc.x,loc.y,siz,siz);
+    rect(loc.x,loc.y,siz,siz);
     //ellipse(loc.x,loc.y,siz,siz);
-    image(partimage,loc.x,loc.y);
+    //image(partimage,loc.x,loc.y);
     //pushMatrix();
     //translate(loc.x,loc.y);
     //rotate(10);
