@@ -24,7 +24,7 @@ void draw() {
   } else {
         particleRandomMovement = 1;
   }
-  if (frameCount % 10 == 0) println("framerate: "+frameRate);
+  //if (frameCount % 10 == 0) println("framerate: "+frameRate);
 }
 
 

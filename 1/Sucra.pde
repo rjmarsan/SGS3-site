@@ -11,6 +11,7 @@ class Sucra {
   PVector vel;
   PVector acc;
   PImage partimage;
+  float weight = 1;
   
   
   
@@ -19,6 +20,7 @@ class Sucra {
     vel = new PVector(0,0,0);
     loc = location.get();
     partimage = particleImages[(int)random(0,particleImages.length)];
+    weight = weight + random(-1,1)*0.5f;
   }
   
   
@@ -42,8 +44,8 @@ class Sucra {
     average.mult(avgdist);
     vel = average;//.add(average);
     */
-    vel.x += random(-1,1)*particleRandomMovement;
-    vel.y += random(-1,1)*particleRandomMovement;//.add(new PVector(random(-1,1)*particleRandomMovement, random(-1,1)*particleRandomMovement, 0));
+    vel.x += random(-1,1)*particleRandomMovement / weight;
+    vel.y += random(-1,1)*particleRandomMovement / weight;//.add(new PVector(random(-1,1)*particleRandomMovement, random(-1,1)*particleRandomMovement, 0));
     vel.mult(particleDampening);
     bounds(0,width,0,height);
   }
@@ -51,24 +53,25 @@ class Sucra {
   void bounds(float lowx, float highx, float lowy, float highy) {
     if (loc.x < lowx) {
       loc.x = lowx;
-      vel.x = -vel.x;
+      vel.x = -vel.x*2;
     }
     if (loc.x > highx) {
       loc.x = highx;
-      vel.x = -vel.x;
+      vel.x = -vel.x*2;
     }
     if (loc.y < lowy) {
       loc.y = lowy;
-      vel.y = -vel.y;
+      vel.y = -vel.y*2;
     } 
     if (loc.y > highy) {
       loc.y = highy;
-      vel.y = -vel.y;
+      vel.y = -vel.y*2;
     }
   }
   
   void render() {
-    rect(loc.x,loc.y,siz,siz);
+    float sizz = siz * weight;
+    rect(loc.x,loc.y,sizz,sizz);
     //ellipse(loc.x,loc.y,siz,siz);
     //image(partimage,loc.x,loc.y);
     //pushMatrix();
@@ -84,9 +87,10 @@ class Sucra {
   }
   
   void repel(PVector forceloc, float force) {
+    //float randOff = 0.1f;
     float distance = PVector.dist(loc,forceloc);
     distance = 1/distance;//sqrt(distance);
-    force = distance * force;
+    force = distance * force / weight;
     PVector forcevec = PVector.sub(loc,forceloc);
     forcevec.normalize();
     forcevec.mult(force);
